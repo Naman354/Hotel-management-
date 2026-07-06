@@ -6,6 +6,7 @@ function App() {
   const [hotels, setHotels] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     async function loadHotels() {
@@ -22,10 +23,18 @@ function App() {
     loadHotels();
   }, []);
 
+  const filteredHotels = hotels.filter((hotel) => {
+    const query = searchTerm.toLowerCase();
+    return (
+      hotel.name.toLowerCase().includes(query) ||
+      hotel.location.toLowerCase().includes(query)
+    );
+  });
+
   return (
     <div className="min-h-screen bg-slate-50 px-4 py-8 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
-        <header className="mb-8">
+        <header className="mb-6">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-amber-600">
             Hotel Explorer
           </p>
@@ -33,13 +42,21 @@ function App() {
             Find your perfect stay
           </h1>
           <p className="mt-3 max-w-2xl text-slate-600">
-            Browse available hotels from the API and explore the details.
+            Search by hotel name or location and browse available stays.
           </p>
         </header>
 
-        {loading && (
-          <p className="text-slate-600">Loading hotels...</p>
-        )}
+        <div className="mb-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search by hotel name or location"
+            className="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-slate-900"
+          />
+        </div>
+
+        {loading && <p className="text-slate-600">Loading hotels...</p>}
 
         {error && (
           <p className="rounded-lg border border-red-200 bg-red-50 p-4 text-red-700">
@@ -47,13 +64,13 @@ function App() {
           </p>
         )}
 
-        {!loading && !error && hotels.length === 0 && (
-          <p className="text-slate-600">No hotels found.</p>
+        {!loading && !error && filteredHotels.length === 0 && (
+          <p className="text-slate-600">No hotels match your search.</p>
         )}
 
         {!loading && !error && (
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {hotels.map((hotel) => (
+            {filteredHotels.map((hotel) => (
               <HotelCard key={hotel.id} hotel={hotel} />
             ))}
           </div>
