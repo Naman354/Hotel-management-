@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { getHotels } from './services/hotelService';
 import HotelCard from './components/HotelCard';
-import HotelDetailsPage from './pages/HotelDetailsPage';
 import Navbar from './components/Navbar';
+import { lazy, Suspense } from 'react';
+
+const HotelDetailsPage = lazy(() => import('./pages/HotelDetailsPage'));
 
 function HomePage() {
   const [hotels, setHotels] = useState([]);
@@ -52,7 +54,19 @@ function HomePage() {
             </p>
           </header>
 
-          <div className="mb-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+          <div className="mb-6 rounded-[24px] border border-stone-200 bg-gradient-to-br from-stone-900 via-stone-800 to-amber-900 p-6 text-white shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-slate-300">
+              Handpicked stays
+            </p>
+            <h2 className="mt-2 text-2xl font-semibold">
+              Discover comfortable hotels in amazing locations
+            </h2>
+            <p className="mt-2 max-w-2xl text-sm text-slate-300">
+              Browse curated properties and find the right stay for your next trip.
+            </p>
+          </div>
+
+          <div className="mb-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
             <input
               type="text"
               value={searchTerm}
@@ -63,17 +77,17 @@ function HomePage() {
           </div>
 
           <div className="mb-6 grid gap-4 md:grid-cols-3">
-            <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+            <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
               <p className="text-sm font-semibold text-slate-500">Hotels</p>
               <p className="mt-2 text-2xl font-semibold text-slate-900">{hotels.length}</p>
             </div>
-            <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+            <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
               <p className="text-sm font-semibold text-slate-500">Locations</p>
               <p className="mt-2 text-2xl font-semibold text-slate-900">
                 {new Set(hotels.map((hotel) => hotel.location)).size}
               </p>
             </div>
-            <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+            <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
               <p className="text-sm font-semibold text-slate-500">Top Rated</p>
               <p className="mt-2 text-2xl font-semibold text-slate-900">
                 {hotels.length > 0
@@ -115,6 +129,9 @@ function HomePage() {
           )}
         </div>
       </main>
+      <footer className="mt-10 border-t border-slate-200 py-6 text-center text-sm text-slate-500">
+        Built with React, Tailwind CSS, and the hotel API.
+      </footer>
     </div>
   );
 }
@@ -124,7 +141,14 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/hotel/:id" element={<HotelDetailsPage />} />
+        <Route
+          path="/hotel/:id"
+          element={
+            <Suspense fallback={<div className="p-6 text-slate-600">Loading page...</div>}>
+              <HotelDetailsPage />
+            </Suspense>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

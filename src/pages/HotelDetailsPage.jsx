@@ -24,14 +24,23 @@ function HotelDetailsPage() {
   }, [id]);
 
   if (loading) {
-    return <p className="text-slate-600">Loading hotel details...</p>;
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-8">
+        <div className="rounded-2xl border border-slate-200 bg-white px-8 py-6 text-center shadow-sm">
+          <p className="text-lg font-semibold text-slate-900">Loading hotel details...</p>
+          <p className="mt-2 text-sm text-slate-600">
+            Please wait while we fetch the latest information.
+          </p>
+        </div>
+      </div>
+    );
   }
 
   if (error || !hotel) {
     return (
       <div className="rounded-xl bg-white p-6 shadow-sm">
         <p className="text-red-600">{error || 'Hotel not found.'}</p>
-        <Link to="/" className="mt-4 inline-block text-sm font-medium text-slate-900">
+        <Link to="/" className="mt-4 inline-block text-sm font-medium text-slate-900 hover:text-slate-700">
           Go back home
         </Link>
       </div>
@@ -40,7 +49,7 @@ function HotelDetailsPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 px-4 py-8 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-4xl rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+      <div className="mx-auto max-w-4xl rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
         <Link to="/" className="text-sm font-medium text-slate-600 hover:text-slate-900">
           ← Back to hotels
         </Link>

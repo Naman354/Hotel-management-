@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 function HotelCard({ hotel }) {
   return (
-    <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+    <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
       <div className="flex items-start justify-between gap-3">
         <div>
           <h2 className="text-xl font-semibold text-slate-900">{hotel.name}</h2>
@@ -21,7 +21,7 @@ function HotelCard({ hotel }) {
         <p className="text-lg font-semibold text-slate-900">₹{hotel.price}</p>
         <Link
           to={`/hotel/${hotel.id}`}
-          className="rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white"
+          className="rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white transition duration-200 hover:bg-slate-700 active:scale-95"
         >
           View details
         </Link>
