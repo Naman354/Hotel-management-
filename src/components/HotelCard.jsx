@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function HotelCard({ hotel }) {
     return (
         <article className="rounded-2xl border-slate-200 bg-white p-6 shadow-sm">
@@ -17,10 +19,13 @@ function HotelCard({ hotel }) {
 
             <div className="mt-5 flex items-center justify-between">
                 <p className="text-lg font-semibold text-slate-900">₹{hotel.price}</p>
-                <button className="rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white">
+                <Link
+                to={`/hotel/${hotel.id}`}
+                className="rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white"
+            >
                     View details
-                </button>    
-            </div>"
+                </Link>
+            </div>
         </article>
     );
 }

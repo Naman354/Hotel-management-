@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { getHotels } from './services/hotelService';
 import HotelCard from './components/HotelCard';
+import HotelDetailsPage from './pages/HotelDetailsPage';
 
-function App() {
+function HomePage() {
   const [hotels, setHotels] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -78,6 +80,17 @@ function App() {
       </div>
     </div>
   );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/hotel/:id" element={<HotelDetailsPage />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App;
