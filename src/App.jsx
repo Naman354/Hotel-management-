@@ -37,59 +37,59 @@ function HomePage() {
 });
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-[#f3fbfa]">
       <Navbar />
 
       <main className="px-4 py-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           <header className="mb-6">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-amber-600">
-              Hotel Explorer
-            </p>
             <h1 className="mt-2 text-3xl font-semibold text-slate-900 sm:text-4xl">
               Find your perfect stay
             </h1>
             <p className="mt-3 max-w-2xl text-slate-600">
-              Search by hotel name or location and browse available stays.
+              Find the best hotels at the cheapest price.
             </p>
           </header>
 
-          <div className="mb-6 rounded-[24px] border border-stone-200 bg-gradient-to-br from-stone-900 via-stone-800 to-amber-900 p-6 text-white shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-slate-300">
-              Handpicked stays
+          <div className="mb-6 rounded-[24px] border border-[#6ebf9e] bg-gradient-to-br from-[#b9e9d5] via-[#8eceb2] to-[#d8f4e4] p-6 text-[#145a46] shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#145a46]">
+              Fresh stays
             </p>
-            <h2 className="mt-2 text-2xl font-semibold">
-              Discover comfortable hotels in amazing locations
+            <h2 className="mt-2 text-2xl font-semibold text-[#145a46]">
+              Discover hotels with easy search and polished details
             </h2>
-            <p className="mt-2 max-w-2xl text-sm text-slate-300">
-              Browse curated properties and find the right stay for your next trip.
+            <p className="mt-2 max-w-2xl text-sm text-[#2f6b58]">
+              Browse curated properties in the best locations and find the right stay.
             </p>
+            <div className="mt-4 inline-flex rounded-full bg-[#145a46] px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-white">
+              At the best prices
+            </div>
           </div>
 
-          <div className="mb-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
+          <div className="mb-6 rounded-2xl border border-[#6ebf9e] bg-gradient-to-r from-[#eafaf2] to-[#dbeee7] p-4 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search by hotel name or location"
-              className="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-slate-900"
+              className="w-full rounded-xl border border-[#2a7d65] bg-[#f3fbfa] px-4 py-3 text-sm outline-none placeholder:text-[#2f6b58] focus:border-[#155a47] focus:ring-2 focus:ring-[#8eceb2] transition"
             />
           </div>
 
           <div className="mb-6 grid gap-4 md:grid-cols-3">
-            <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
-              <p className="text-sm font-semibold text-slate-500">Hotels</p>
-              <p className="mt-2 text-2xl font-semibold text-slate-900">{hotels.length}</p>
+            <div className="rounded-2xl border border-[#6ebf9e] bg-gradient-to-br from-[#eafaf2] to-[#d8f4e4] p-4 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
+              <p className="text-sm font-semibold text-[#2f6b58]">Hotels</p>
+              <p className="mt-2 text-2xl font-semibold text-[#145a46]">{hotels.length}</p>
             </div>
-            <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
-              <p className="text-sm font-semibold text-slate-500">Locations</p>
-              <p className="mt-2 text-2xl font-semibold text-slate-900">
+            <div className="rounded-2xl border border-[#6ebf9e] bg-gradient-to-br from-[#eafaf2] to-[#d8f4e4] p-4 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
+              <p className="text-sm font-semibold text-[#2f6b58]">Locations</p>
+              <p className="mt-2 text-2xl font-semibold text-[#145a46]">
                 {new Set(hotels.map((hotel) => hotel.location)).size}
               </p>
             </div>
-            <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
-              <p className="text-sm font-semibold text-slate-500">Top Rated</p>
-              <p className="mt-2 text-2xl font-semibold text-slate-900">
+            <div className="rounded-2xl border border-[#6ebf9e] bg-gradient-to-br from-[#eafaf2] to-[#d8f4e4] p-4 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
+              <p className="text-sm font-semibold text-[#2f6b58]">Top Rated</p>
+              <p className="mt-2 text-2xl font-semibold text-[#145a46]">
                 {hotels.length > 0
                   ? `${Math.max(...hotels.map((hotel) => Number(hotel.rating))).toFixed(1)}★`
                   : '—'}
