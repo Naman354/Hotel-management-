@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 function HotelCard({ hotel }) {
   return (
-    <article className="rounded-3xl border border-[#6ebf9e] bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
+    <article className="rounded-3xl border border-[#6ebf9e] bg-white p-6 shadow-lg transition duration-200 hover:-translate-y-1 hover:shadow-2xl">
       <div className="flex items-start justify-between gap-3">
         <div>
           <div className="mb-4 h-1 w-16 rounded-full bg-[#4f8a6f]" />

@@ -25,8 +25,8 @@ function HotelDetailsPage() {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[#e8f3eb] px-4 py-8">
-        <div className="rounded-[24px] border border-[#cfe1d5] bg-[#f6fdf6] px-8 py-6 text-center shadow-sm">
+      <div className="flex min-h-screen items-center justify-center bg-transparent px-4 py-8">
+        <div className="rounded-[24px] border border-[#cfe1d5] bg-[#f6fdf6] px-8 py-6 text-center shadow-lg">
           <p className="text-lg font-semibold text-[#355546]">Loading hotel details...</p>
           <p className="mt-2 text-sm text-[#5e7366]">
             Please wait while we fetch the latest information.
@@ -38,8 +38,8 @@ function HotelDetailsPage() {
 
   if (error || !hotel) {
     return (
-      <div className="min-h-screen bg-[#e8f3eb] px-4 py-8">
-        <div className="mx-auto max-w-6xl rounded-[28px] border border-[#cfe1d5] bg-[#f6fdf6] p-8 shadow-sm">
+      <div className="min-h-screen bg-transparent px-4 py-8">
+        <div className="mx-auto max-w-6xl rounded-[28px] border border-[#cfe1d5] bg-[#f6fdf6] p-8 shadow-lg">
           <p className="text-[#3b5045]">{error || 'Hotel not found.'}</p>
           <Link
             to="/"
@@ -53,9 +53,9 @@ function HotelDetailsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#dbeee7] px-4 py-8 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-transparent px-4 py-8 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
-        <div className="rounded-[32px] bg-gradient-to-br from-[#155a47] via-[#2a7d65] to-[#cbe9dd] px-6 py-10 text-white shadow-[0_12px_30px_rgba(57,83,72,0.18)] sm:px-8 lg:px-10">
+        <div className="rounded-[32px] bg-gradient-to-br from-[#155a47] via-[#2a7d65] to-[#cbe9dd] px-6 py-10 text-white shadow-[0_12px_30px_rgba(57,83,72,0.18)] sm:px-8 lg:px-10 shadow-lg transition duration-200 hover:-translate-y-1 hover:shadow-2xl">
           <Link
             to="/"
             className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-sm font-medium text-[#f8efe6] backdrop-blur-sm transition hover:bg-white/20"
@@ -84,12 +84,12 @@ function HotelDetailsPage() {
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
           <div className="space-y-6">
-            <div className="rounded-[24px] border border-[#cfe1d5] bg-[#f5faf4] p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-md">
+            <div className="rounded-[24px] border border-[#cfe1d5] bg-[#f5faf4] p-6 shadow-lg transition duration-200 hover:-translate-y-1 hover:shadow-2xl">
               <h2 className="text-2xl font-semibold text-[#314c40]">About this stay</h2>
               <p className="mt-4 text-base leading-8 text-[#536d61]">{hotel.description}</p>
             </div>
 
-            <div className="rounded-[24px] border border-[#cfe1d5] bg-[#f5faf4] p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-md">
+            <div className="rounded-[24px] border border-[#cfe1d5] bg-[#f5faf4] p-6 shadow-lg transition duration-200 hover:-translate-y-1 hover:shadow-2xl">
               <h3 className="text-lg font-semibold text-[#314c40]">What makes it special</h3>
               <ul className="mt-4 space-y-3 text-sm text-[#536d61]">
                 <li className="flex items-start gap-2">
@@ -109,7 +109,7 @@ function HotelDetailsPage() {
           </div>
 
           <div className="space-y-6">
-            <div className="rounded-[24px] border border-[#cfe1d5] bg-[#f5faf4] p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-md">
+            <div className="rounded-[24px] border border-[#cfe1d5] bg-[#f5faf4] p-6 shadow-lg transition duration-200 hover:-translate-y-1 hover:shadow-2xl">
               <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#6a8775]">
                 Guest rating
               </p>
@@ -117,7 +117,7 @@ function HotelDetailsPage() {
               <p className="mt-2 text-sm text-[#536d61]">Excellent reviews from travelers</p>
             </div>
 
-            <div className="rounded-[24px] border border-[#2a7d65] bg-[#155a47] p-6 text-white shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-md">
+            <div className="rounded-[24px] border border-[#2a7d65] bg-[#155a47] p-6 text-white shadow-lg transition duration-200 hover:-translate-y-1 hover:shadow-2xl">
               <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#c6d9c7]">
                 Stay experience
               </p>

@@ -37,7 +37,7 @@ function HomePage() {
 });
 
   return (
-    <div className="min-h-screen bg-[#f3fbfa]">
+    <div className="home-page-background min-h-screen"> 
       <Navbar />
 
       <main className="px-4 py-8 sm:px-6 lg:px-8">
@@ -51,7 +51,7 @@ function HomePage() {
             </p>
           </header>
 
-          <div className="mb-6 rounded-[24px] border border-[#6ebf9e] bg-gradient-to-br from-[#b9e9d5] via-[#8eceb2] to-[#d8f4e4] p-6 text-[#145a46] shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
+          <div className="mb-6 rounded-[24px] border border-[#6ebf9e] bg-gradient-to-br from-[#b9e9d5] via-[#8eceb2] to-[#d8f4e4] p-6 text-[#145a46] shadow-lg transition duration-200 hover:-translate-y-1 hover:shadow-2xl">
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#145a46]">
               Fresh stays
             </p>
@@ -66,7 +66,7 @@ function HomePage() {
             </div>
           </div>
 
-          <div className="mb-6 rounded-2xl border border-[#6ebf9e] bg-gradient-to-r from-[#eafaf2] to-[#dbeee7] p-4 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
+          <div className="mb-6 rounded-2xl border border-[#6ebf9e] bg-gradient-to-r from-[#eafaf2] to-[#dbeee7] p-4 shadow-lg transition duration-200 hover:-translate-y-1 hover:shadow-2xl">
             <input
               type="text"
               value={searchTerm}
@@ -77,17 +77,17 @@ function HomePage() {
           </div>
 
           <div className="mb-6 grid gap-4 md:grid-cols-3">
-            <div className="rounded-2xl border border-[#6ebf9e] bg-gradient-to-br from-[#eafaf2] to-[#d8f4e4] p-4 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
+            <div className="rounded-2xl border border-[#6ebf9e] bg-gradient-to-br from-[#eafaf2] to-[#d8f4e4] p-4 shadow-lg transition duration-200 hover:-translate-y-1 hover:shadow-2xl">
               <p className="text-sm font-semibold text-[#2f6b58]">Hotels</p>
               <p className="mt-2 text-2xl font-semibold text-[#145a46]">{hotels.length}</p>
             </div>
-            <div className="rounded-2xl border border-[#6ebf9e] bg-gradient-to-br from-[#eafaf2] to-[#d8f4e4] p-4 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
+            <div className="rounded-2xl border border-[#6ebf9e] bg-gradient-to-br from-[#eafaf2] to-[#d8f4e4] p-4 shadow-lg transition duration-200 hover:-translate-y-1 hover:shadow-2xl">
               <p className="text-sm font-semibold text-[#2f6b58]">Locations</p>
               <p className="mt-2 text-2xl font-semibold text-[#145a46]">
                 {new Set(hotels.map((hotel) => hotel.location)).size}
               </p>
             </div>
-            <div className="rounded-2xl border border-[#6ebf9e] bg-gradient-to-br from-[#eafaf2] to-[#d8f4e4] p-4 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
+            <div className="rounded-2xl border border-[#6ebf9e] bg-gradient-to-br from-[#eafaf2] to-[#d8f4e4] p-4 shadow-lg transition duration-200 hover:-translate-y-1 hover:shadow-2xl">
               <p className="text-sm font-semibold text-[#2f6b58]">Top Rated</p>
               <p className="mt-2 text-2xl font-semibold text-[#145a46]">
                 {hotels.length > 0
@@ -98,7 +98,7 @@ function HomePage() {
           </div>
 
           {loading && (
-            <div className="rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm">
+            <div className="rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-lg">
               <p className="text-lg font-medium text-slate-900">Loading hotels...</p>
               <p className="mt-2 text-sm text-slate-600">
                 Please wait while we fetch the latest stays.
@@ -107,13 +107,13 @@ function HomePage() {
           )}
 
           {error && (
-            <div className="rounded-2xl border border-red-200 bg-red-50 p-6 shadow-sm">
+            <div className="rounded-2xl border border-red-200 bg-red-50 p-6 shadow-lg">
               <p className="font-medium text-red-700">{error}</p>
             </div>
           )}
 
           {!loading && !error && filteredHotels.length === 0 && (
-            <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-8 text-center shadow-sm">
+            <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-8 text-center shadow-lg">
               <p className="text-lg font-medium text-slate-900">No hotels found</p>
               <p className="mt-2 text-sm text-slate-600">
                 Try a different hotel name or location.
