@@ -11,7 +11,7 @@ function App() {
     async function loadHotels() {
       try {
         const data = await getHotels();
-        setHotels(data);
+        setHotels(Array.isArray(data) ? data : []);
       } catch (err) {
         setError('Failed to load hotels.');
       } finally {
