@@ -62,18 +62,50 @@ function HomePage() {
             />
           </div>
 
-          {loading && <p className="text-slate-600">Loading hotels...</p>}
+          <div className="mb-6 grid gap-4 md:grid-cols-3">
+            <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+              <p className="text-sm font-semibold text-slate-500">Hotels</p>
+              <p className="mt-2 text-2xl font-semibold text-slate-900">{hotels.length}</p>
+            </div>
+            <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+              <p className="text-sm font-semibold text-slate-500">Locations</p>
+              <p className="mt-2 text-2xl font-semibold text-slate-900">
+                {new Set(hotels.map((hotel) => hotel.location)).size}
+              </p>
+            </div>
+            <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+              <p className="text-sm font-semibold text-slate-500">Top Rated</p>
+              <p className="mt-2 text-2xl font-semibold text-slate-900">
+                {hotels.length > 0
+                  ? `${Math.max(...hotels.map((hotel) => Number(hotel.rating))).toFixed(1)}★`
+                  : '—'}
+              </p>
+            </div>
+          </div>
+
+          {loading && (
+            <div className="rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm">
+              <p className="text-lg font-medium text-slate-900">Loading hotels...</p>
+              <p className="mt-2 text-sm text-slate-600">
+                Please wait while we fetch the latest stays.
+              </p>
+            </div>
+          )}
 
           {error && (
-            <p className="rounded-lg border border-red-200 bg-red-50 p-4 text-red-700">
-              {error}
-            </p>
+            <div className="rounded-2xl border border-red-200 bg-red-50 p-6 shadow-sm">
+              <p className="font-medium text-red-700">{error}</p>
+            </div>
           )}
 
           {!loading && !error && filteredHotels.length === 0 && (
-            <p className="text-slate-600">No hotels match your search.</p>
+            <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-8 text-center shadow-sm">
+              <p className="text-lg font-medium text-slate-900">No hotels found</p>
+              <p className="mt-2 text-sm text-slate-600">
+                Try a different hotel name or location.
+              </p>
+            </div>
           )}
-
           {!loading && !error && (
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
               {filteredHotels.map((hotel) => (
